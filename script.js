@@ -2,7 +2,7 @@ import { apiKey } from "./env.js";
 
 const placeAPI = `https://api.geoapify.com/v2/places?categories=commercial.supermarket&bias=proximity:10.7389701,59.9133301&limit=20&apiKey=${apiKey}`;
 
-/*-------------------------------LAT ---- LON--- ZOOM LEVEL ---*/
+/*-------------------------------LAT --------LON------ ZOOM LEVEL ---*/
 const map = L.map("map").setView([48.1500327, 11.5753989], 10);
 
 L.tileLayer(
