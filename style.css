@@ -1,0 +1,16 @@
+#map {
+  height: 85dvh;
+  border-radius: 12px;
+  border: 2px solid black;
+}
+
+body {
+  background-color: rgb(27, 39, 28);
+}
+
+h2 {
+  justify-content: center;
+  display: flex;
+  padding: 0;
+  color: white;
+}
