@@ -1,11 +1,13 @@
 # Dokumentasjon
 
-## Hvordan vi fikk serveren til å ikke vise api keyen direkte til repoen
+## Hvordan vi fikk Prosjektet vårt til å ikke vise api keyen direkte til repoen
 
-For å være sikker på at `apiKeyen` skal bli skjult MÅ du ha en **Backend server** som er skjult, som Node/Vite eller noe for a hide den i en `.env file` som du da `gitignorer`.
-Men det er ikke allt du trenger FORDI.. mapen vill jo ikke loadet uten keyen selv om du har importert den fra VITE til en js module.
-Så du må ha en `deploy.yml` file som git hub sjekker etter secrets og bruker da keyen fra github secrets for å unngå å ha `apiKeyen` visen på github repo.
-Problemet forsatt er `apiKeyen` er visenes i devtools network
+For å være sikker på at `apiKeyen` skal bli "skjult" for må du ha en **Backend server** men dette er problematisk for github repo, så det vi kan gjøre er å lage en `.env` i ".gitignore" og importert nøkkelen fra vite modules slik at keyen ikke vises direkte men som et variabel.
+
+Men det er ikke alt du trenger siden `apien` vill ikke loade uten keyen er tilgjenlig for github selv om du har importert `vite settings` til en `JS module`. Så for "workaround" det problemet bruker vi `deploy.yml` som henter nøkkelen fra Github Secrets
+Problemet enda er at keyen er fortsatt tilgjenglig gjennom devtools network
+
+---
 
 ## Leaflet Good to knows
 
