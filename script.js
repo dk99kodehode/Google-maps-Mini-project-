@@ -2,9 +2,8 @@ import { apiKey } from "./env.js";
 
 const placeAPI = `https://api.geoapify.com/v2/places?categories=commercial.supermarket&bias=proximity:10.7389701,59.9133301&limit=20&apiKey=${apiKey}`;
 
-/*-------------------------------LAT --------LON------ ZOOM LEVEL ---*/
-const map = L.map("map").setView([48.1500327, 11.5753989], 10);
-
+/// map api i se sjølv
+const map = L.map("map").setView([59.9133301, 10.7389701], 12);
 L.tileLayer(
   `https://maps.geoapify.com/v1/tile/carto/{z}/{x}/{y}.png?&apiKey=${apiKey}`,
   {
@@ -14,3 +13,32 @@ L.tileLayer(
     id: "osm-bright",
   },
 ).addTo(map);
+
+//
+async function loadPlace() {
+  try {
+    const response = await fetch(placeAPI);
+    if (!response.ok) {
+      throw new Error(`${response.status}`);
+    }
+    const data = await response.json();
+    markerToMap(data);
+
+    console.log(data);
+  } catch (error) {
+    console.error("Failed to fetch", error);
+  }
+}
+
+function markerToMap(data) {
+  data.features.forEach((feature) => {
+    const name = feature.properties.name || "Unrecognized place";
+    const [lon, lat] = feature.geometry.coordinates;
+
+    L.marker([lat, lon]).addTo(map).bindPopup(name); // Liten popup som viser hvor du er
+  });
+}
+
+///
+
+loadPlace();
