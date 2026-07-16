@@ -14,7 +14,6 @@ L.tileLayer(
   },
 ).addTo(map);
 
-//
 async function loadPlace() {
   try {
     const response = await fetch(placeAPI);
@@ -30,12 +29,17 @@ async function loadPlace() {
   }
 }
 
+// Marker som tar lon,lat,names & adress //
 function markerToMap(data) {
   data.features.forEach((feature) => {
     const name = feature.properties.name || "Unrecognized place";
     const [lon, lat] = feature.geometry.coordinates;
 
-    L.marker([lat, lon]).addTo(map).bindPopup(name); // Liten popup som viser hvor du er
+    const address = feature.properties.address_line2;
+
+    L.marker([lat, lon])
+      .addTo(map)
+      .bindPopup(name + "<br />" + address); // Liten popup som viser hvor du er
   });
 }
 
