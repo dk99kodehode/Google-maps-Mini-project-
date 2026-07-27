@@ -6,6 +6,12 @@ For å være sikker på at `apiKeyen` skal bli "skjult" må du ha en **Backend s
 
 Men det er ikke alt du trenger siden `apien` vill ikke loade uten keyen på `github pages` selv om du har importert `vite settings` til en `JS module`. Så for "workarounde" det problemet bruker vi `deploy.yml`-workflow i Github actions som henter nøkkelen fra Github Secrets.
 
+## eksempler på "github secrets"
+
+- name: Build
+  env:
+  VITE_GEOAPIFY_API_KEY: ${{ secrets.VITE_GEOAPIFY_API_KEY }}
+
 **_Problemet enda er at keyen er fortsatt tilgjenglig gjennom devtools network_**
 
 ---

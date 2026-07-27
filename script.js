@@ -16,7 +16,7 @@ async function loadPlace(lat, lon) {
   markerToMap(data);
 }
 
-// spør om tillatelse for å bruke lokasjonen din
+// spør om tillatelse for å bruke lokasjonen din og finner "butikker" i nærheten
 navigator.geolocation.getCurrentPosition(
   (position) => {
     const userLat = position.coords.latitude;
