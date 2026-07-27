@@ -1,9 +1,38 @@
 import { apiKey } from "./env.js";
 
-const placeAPI = `https://api.geoapify.com/v2/places?categories=commercial.supermarket&bias=proximity:10.7389701,59.9133301&limit=20&apiKey=${apiKey}`;
+const searchBar = document.getElementById("search");
 
-/// map api i se sjølv
-const map = L.map("map").setView([59.9133301, 10.7389701], 12);
+async function loadPlace(lat, lon) {
+  const placeAPI = `https://api.geoapify.com/v2/places?categories=commercial.supermarket&bias=proximity:${lon},${lat}&limit=20&apiKey=${apiKey}`;
+
+  const response = await fetch(placeAPI);
+
+  if (!response.ok) {
+    throw new Error(`API error: ${response.status}`);
+  }
+
+  const data = await response.json();
+
+  markerToMap(data);
+}
+
+// spør om tillatelse for å bruke lokasjonen din
+navigator.geolocation.getCurrentPosition(
+  (position) => {
+    const userLat = position.coords.latitude;
+    const userLon = position.coords.longitude;
+
+    map.setView([userLat, userLon], 14);
+
+    loadPlace(userLat, userLon);
+  },
+  // visst den blir "kansellert" default map setview value 0 lat , 0 lon
+  (error) => {
+    map.setView([0, 0], 2);
+  },
+);
+
+const map = L.map("map").setView([0, 0], 2);
 L.tileLayer(
   `https://maps.geoapify.com/v1/tile/carto/{z}/{x}/{y}.png?&apiKey=${apiKey}`,
   {
@@ -14,25 +43,11 @@ L.tileLayer(
   },
 ).addTo(map);
 
-async function loadPlace() {
-  try {
-    const response = await fetch(placeAPI);
-    if (!response.ok) {
-      throw new Error(`${response.status}`);
-    }
-    const data = await response.json();
-    markerToMap(data);
-
-    console.log(data);
-  } catch (error) {
-    console.error("Failed to fetch", error);
-  }
-}
-
 // Marker som tar lon,lat,names & adress //
 function markerToMap(data) {
   data.features.forEach((feature) => {
     const name = feature.properties.name || "Unrecognized place";
+
     const [lon, lat] = feature.geometry.coordinates;
 
     const address = feature.properties.address_line2;
@@ -45,4 +60,4 @@ function markerToMap(data) {
 
 ///
 
-loadPlace();
+loadPlace(userLat, userLon);

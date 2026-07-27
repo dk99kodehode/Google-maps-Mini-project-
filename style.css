@@ -2,10 +2,11 @@
   height: 85dvh;
   border-radius: 12px;
   border: 2px solid black;
+  margin-top: 1%;
 }
 
 body {
-  background-color: rgb(27, 39, 28);
+  background-color: rgb(14, 47, 16);
 }
 
 h2 {
@@ -13,4 +14,10 @@ h2 {
   display: flex;
   padding: 0;
   color: white;
+}
+
+#search {
+  border-radius: 12px;
+  text-align: center;
+  border-color: rgb(37, 255, 12);
 }
