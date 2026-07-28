@@ -1,5 +1,5 @@
 #map {
-  height: 85dvh;
+  height: 90dvh;
   border-radius: 12px;
   border: 2px solid black;
   margin-top: 1%;
@@ -7,6 +7,11 @@
 
 body {
   background-color: rgb(14, 47, 16);
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 h2 {
@@ -20,4 +25,45 @@ h2 {
   border-radius: 12px;
   text-align: center;
   border-color: rgb(37, 255, 12);
+  margin-top: 10px;
+}
+
+/*******************************************/
+#sidebar {
+  position: fixed;
+  width: 300px;
+  height: 90dvh;
+  margin-top: 48px;
+  justify-content: center;
+  background-color: rgb(38, 120, 92);
+  z-index: 1000;
+  border-radius: 12px;
+  top: 0;
+  right: 0;
+}
+
+#sidebar.sidebar-hidden {
+  display: none;
+}
+
+#sidebar-content {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  color: white;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+}
+
+#close-btn {
+  top: 0;
+  right: 0;
+  position: absolute;
+  margin-top: 2px;
+  padding: 4px;
+  border-radius: 4px;
+  background-color: red;
+  color: white;
+  cursor: pointer;
 }

@@ -2,6 +2,10 @@ import { apiKey } from "./env.js";
 
 const searchBar = document.getElementById("search");
 
+const closeBtn = document.getElementById("close-btn");
+const sideBar = document.getElementById("sidebar");
+const sideBarContent = document.getElementById("sidebar-content");
+
 async function loadPlace(lat, lon) {
   const placeAPI = `https://api.geoapify.com/v2/places?categories=commercial.supermarket&bias=proximity:${lon},${lat}&limit=20&apiKey=${apiKey}`;
 
@@ -47,14 +51,25 @@ L.tileLayer(
 function markerToMap(data) {
   data.features.forEach((feature) => {
     const name = feature.properties.name || "Unrecognized place";
-
     const [lon, lat] = feature.geometry.coordinates;
-
     const address = feature.properties.address_line2;
 
-    L.marker([lat, lon])
-      .addTo(map)
-      .bindPopup(name + "<br />" + address); // Liten popup som viser hvor du er
+    const marker = L.marker([lat, lon]).addTo(map);
+
+    marker.bindPopup(name + "<br />" + address);
+
+    marker.on("click", () => {
+      sideBarContent.innerHTML = `
+      <h2> ${name}</h2>
+      <p> Lokasjon: ${address}</p>
+      `;
+
+      sideBar.classList.remove("sidebar-hidden");
+
+      closeBtn.addEventListener("click", () => {
+        sideBar.classList.add("sidebar-hidden");
+      });
+    });
   });
 }
 
