@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: rgb(14, 47, 16);
+  background-color: rgb(17, 17, 17);
   margin: 0;
   padding: 0;
   height: 100%;
@@ -35,7 +35,7 @@ h2 {
   height: 90dvh;
   margin-top: 48px;
   justify-content: center;
-  background-color: rgb(38, 120, 92);
+  background-color: rgb(29, 30, 30);
   z-index: 1000;
   border-radius: 12px;
   top: 0;
@@ -50,7 +50,7 @@ h2 {
   align-items: center;
   justify-content: center;
   display: flex;
-  color: white;
+  color: rgb(255, 255, 255);
   flex-direction: column;
   gap: 20px;
   padding: 10px;
@@ -61,7 +61,9 @@ h2 {
   right: 0;
   position: absolute;
   margin-top: 2px;
-  padding: 4px;
+  margin-right: 5%;
+  padding: 2px;
+  width: 40px;
   border-radius: 4px;
   background-color: red;
   color: white;

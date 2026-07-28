@@ -1,7 +1,7 @@
 import { apiKey } from "./env.js";
 
+/*--------ELEMENTER FRA HTML---------*/
 const searchBar = document.getElementById("search");
-
 const closeBtn = document.getElementById("close-btn");
 const sideBar = document.getElementById("sidebar");
 const sideBarContent = document.getElementById("sidebar-content");
@@ -56,7 +56,8 @@ function markerToMap(data) {
 
     const marker = L.marker([lat, lon]).addTo(map);
 
-    marker.bindPopup(name + "<br />" + address);
+    /*-----tilfelle du vill ha popup OVER marker som viser adress + name---*/
+    /*marker.bindPopup(name + "<br />" + address);*/
 
     marker.on("click", () => {
       sideBarContent.innerHTML = `
@@ -66,7 +67,7 @@ function markerToMap(data) {
 
       sideBar.classList.remove("sidebar-hidden");
 
-      closeBtn.addEventListener("click", () => {
+      closeBtn.ad("click", () => {
         sideBar.classList.add("sidebar-hidden");
       });
     });
