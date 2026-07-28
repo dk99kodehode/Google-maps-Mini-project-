@@ -64,12 +64,14 @@ function markerToMap(data) {
     marker.on("click", () => {
       sideBarContent.innerHTML = `
       <h2> ${name}</h2>
-      <p> Åpent : ${hours}</p>
-      <p> Lokasjon: ${address}</p>
+      <p>🕒: ${hours}</p>
+      <p>📍:${address}</p>
       <img> "BILDE HER"  <img/>
       `;
 
       sideBar.classList.remove("sidebar-hidden");
+      const sideBarSearch = document.querySelector(".search-side");
+      sideBarSearch.value = `${name}`;
 
       closeBtn.addEventListener("click", () => {
         sideBar.classList.add("sidebar-hidden");

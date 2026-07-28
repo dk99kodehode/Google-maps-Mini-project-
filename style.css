@@ -22,7 +22,7 @@ h2 {
 }
 
 #search {
-  border-radius: 12px;
+  border-radius: 4px;
   text-align: center;
   border-color: rgb(37, 255, 12);
   margin-top: 10px;
@@ -42,7 +42,7 @@ h2 {
   top: 0;
   right: 0;
 
-  transform: translateX(0px);
+  transform: translateX(-2px);
   transition: transform 0.3s;
 }
 
@@ -64,11 +64,27 @@ h2 {
   padding: 10px;
 }
 
+.search-side {
+  position: absolute;
+  border-radius: 4px;
+  margin-top: 2%;
+  width: 60%;
+  transform: translateX(60px);
+
+  text-align: center;
+}
+
+.img {
+  background-color: blue;
+  width: 90%;
+  height: 20px;
+}
+
 #close-btn {
   top: 0;
   right: 0;
   position: absolute;
-  margin-top: 2px;
+  margin-top: 2%;
   margin-right: 5%;
   padding: 2px;
   width: 40px;
