@@ -6,6 +6,7 @@ const closeBtn = document.getElementById("close-btn");
 const sideBar = document.getElementById("sidebar");
 const sideBarContent = document.getElementById("sidebar-content");
 
+/*-----LOADER KUN "SUPERMARKETS" I URL-----*/
 async function loadPlace(lat, lon) {
   const placeAPI = `https://api.geoapify.com/v2/places?categories=commercial.supermarket&bias=proximity:${lon},${lat}&limit=20&apiKey=${apiKey}`;
 
@@ -53,6 +54,7 @@ function markerToMap(data) {
     const name = feature.properties.name || "Unrecognized place";
     const [lon, lat] = feature.geometry.coordinates;
     const address = feature.properties.address_line2;
+    const hours = feature.properties.opening_hours;
 
     const marker = L.marker([lat, lon]).addTo(map);
 
@@ -62,7 +64,9 @@ function markerToMap(data) {
     marker.on("click", () => {
       sideBarContent.innerHTML = `
       <h2> ${name}</h2>
+      <p> Åpent : ${hours}</p>
       <p> Lokasjon: ${address}</p>
+      <img> "BILDE HER"  <img/>
       `;
 
       sideBar.classList.remove("sidebar-hidden");
