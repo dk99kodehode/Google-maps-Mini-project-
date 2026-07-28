@@ -56,6 +56,8 @@ function markerToMap(data) {
     const address = feature.properties.address_line2;
     const hours = feature.properties.opening_hours;
 
+    const contact = feature.properties.contact.phone;
+
     const marker = L.marker([lat, lon]).addTo(map);
 
     /*-----tilfelle du vill ha popup OVER marker som viser adress + name---*/
@@ -66,6 +68,7 @@ function markerToMap(data) {
       <h2> ${name}</h2>
       <p>🕒: ${hours}</p>
       <p>📍:${address}</p>
+      <p>📍:${contact}</p>
       <img> "BILDE HER"  <img/>
       `;
 
