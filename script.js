@@ -67,7 +67,7 @@ function markerToMap(data) {
 
       sideBar.classList.remove("sidebar-hidden");
 
-      closeBtn.ad("click", () => {
+      closeBtn.addEventListener("click", () => {
         sideBar.classList.add("sidebar-hidden");
       });
     });
