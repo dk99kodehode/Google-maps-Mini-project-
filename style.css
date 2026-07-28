@@ -32,24 +32,32 @@ h2 {
 #sidebar {
   position: fixed;
   width: 350px;
-  height: 90dvh;
-  margin-top: 48px;
+  height: 85%;
+  margin-top: 50px;
+  border: 2px solid rgb(179, 180, 180);
   justify-content: center;
-  background-color: rgb(29, 30, 30);
+  background-color: rgb(25, 25, 25);
   z-index: 1000;
   border-radius: 12px;
   top: 0;
   right: 0;
+
+  transform: translateX(0px);
+  transition: transform 0.3s;
 }
 
 #sidebar.sidebar-hidden {
-  display: none;
+  transform: translateX(400px);
+  transition: transform 0.3s;
 }
 
 #sidebar-content {
   align-items: center;
   justify-content: center;
   display: flex;
+  width: 100%;
+  height: 60%;
+  border-color: 2px solid black;
   color: rgb(255, 255, 255);
   flex-direction: column;
   gap: 20px;
