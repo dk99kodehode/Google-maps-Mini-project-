@@ -29,6 +29,14 @@ h2 {
 }
 
 /*******************************************/
+
+.image-example {
+  width: 300px;
+  height: 200px;
+  background-color: rgb(67, 66, 66);
+  text-align: center;
+}
+
 #sidebar {
   position: fixed;
   width: 350px;

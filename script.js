@@ -63,13 +63,14 @@ function markerToMap(data) {
     /*-----tilfelle du vill ha popup OVER marker som viser adress + name---*/
     /*marker.bindPopup(name + "<br />" + address);*/
 
-    marker.on("click", () => {
+    marker.on("click", (e) => {
+      map.setView(e.target.getLatLng(), 15);
       sideBarContent.innerHTML = `
       <h2> ${name}</h2>
-      <p>🕒: ${hours}</p>
-      <p>📍:${address}</p>
-      <p>📍:${contact}</p>
-      <img> "BILDE HER"  <img/>
+      <p>🕒 ${hours}</p>
+      <p>📍${address}</p>
+      <p>☎️${contact}</p>
+      <div class="image-example"> "BILDE HER"  </div>
       `;
 
       sideBar.classList.remove("sidebar-hidden");
