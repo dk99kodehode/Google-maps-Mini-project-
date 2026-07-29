@@ -24,11 +24,13 @@ h2 {
 #search {
   border-radius: 4px;
   text-align: center;
-  border-color: rgb(37, 255, 12);
+  width: 200px;
+  height: 20px;
+  border-color: rgb(12, 69, 255);
   margin-top: 10px;
 }
 
-/*******************************************/
+/*****************SIDEEEEEEEEEEEBAAAAAAAAAAAAAAAAAAR**************************/
 
 .image-example {
   width: 300px;
@@ -101,4 +103,38 @@ h2 {
   background-color: red;
   color: white;
   cursor: pointer;
+}
+
+/**--------------------------------CATEGORIES BUTTONN------------*/
+
+#hotel-btn {
+  border-radius: 4px;
+  background-color: rgb(245, 162, 9);
+  color: white;
+  cursor: pointer;
+  padding: 3px;
+}
+
+#park-btn {
+  background-color: green;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 3px;
+}
+
+#rest-btn {
+  background-color: red;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 3px;
+}
+
+#store-btn {
+  background-color: rgb(74, 74, 255);
+  color: white;
+  padding: 3px;
+  cursor: pointer;
+  border-radius: 4px;
 }

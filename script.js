@@ -84,6 +84,10 @@ function markerToMap(data) {
   });
 }
 
+map.addEventListener("click", () => {
+  sideBar.classList.add("sidebar-hidden");
+});
+
 ///
 
 loadPlace(userLat, userLon);
