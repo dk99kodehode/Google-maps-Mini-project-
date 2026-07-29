@@ -1,45 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GOOGLE MAPS API</title>
-  <script type="module" src="script.js"></script>
-  <link rel="stylesheet" href="style.css">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>GOOGLE MAPS API</title>
+        <script type="module" src="script.js"></script>
+        <link rel="stylesheet" href="style.css" />
 
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+            integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+            crossorigin=""
+        />
+        <script
+            src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""
+        ></script>
+    </head>
+    <body>
+        <input type="text" id="search" placeholder="Search..." />
+        <button id="hotel-btn">Hotell</button>
+        <button id="park-btn">Park</button>
+        <button id="rest-btn">Restaurant</button>
+        <button id="store-btn">Butikk</button>
 
+        <!-----------map-------------->
+        <div id="map"></div>
 
+        <!-----------sidebar----------------->
+        <div id="sidebar" class="sidebar-hidden">
+            <button id="close-btn">X</button>
+            <input type="text" class="search-side" placeholder="hello" />
 
-</head>
-<body>
-  <input type="text" id="search" placeholder="Search...">
-  <button id="hotel-btn">Hotell</button>
-  <button id="park-btn">Park</button>
-  <button id="rest-btn">Restaurant</button>
-  <button id="store-btn">Butikk</button>
-
-
- 
-
-
-  <!-----------map-------------->
-   <div id="map"></div>
-
-    <!-----------sidebar----------------->
-  <div id="sidebar" class="sidebar-hidden">
-    <button id="close-btn">X</button>
-    <input type="text" class="search-side" placeholder="hello">
-
-    <!----informasjon-->
-    <div id="sidebar-content">
-      <h2>Hellu</h2>
-      <p>adress</p>
-      
-    </div>
-  </div>
-
-  
-</body>
+            <!----informasjon-->
+            <div id="sidebar-content">
+                <h2 id="steds-navn">Hellu</h2>
+                <p id="steds-adresse">adress</p>
+                <p id="åpningstid">adress</p>
+                <p id="kontakt">adress</p>
+            </div>
+        </div>
+    </body>
 </html>
