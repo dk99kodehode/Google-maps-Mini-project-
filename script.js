@@ -21,7 +21,7 @@ async function loadPlace(lat, lon) {
   markerToMap(data);
 }
 
-// spør om tillatelse for å bruke lokasjonen din og finner "butikker" i nærheten
+// spør om tillatelse for å bruke lokasjonen din og finner "butikker" i nærheten. "Sjå Loadplace API" for confirmation på at det er commercial supermarket
 navigator.geolocation.getCurrentPosition(
   (position) => {
     const userLat = position.coords.latitude;
@@ -51,11 +51,11 @@ L.tileLayer(
 // Marker som tar lon,lat,names & adress //
 function markerToMap(data) {
   data.features.forEach((feature) => {
+    // alle attributes eg vill ha for sidebar contentet"
     const name = feature.properties.name || "Unrecognized place";
     const [lon, lat] = feature.geometry.coordinates;
     const address = feature.properties.address_line2;
     const hours = feature.properties.opening_hours;
-
     const contact = feature.properties.contact.phone;
 
     const marker = L.marker([lat, lon]).addTo(map);
