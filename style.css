@@ -1,11 +1,17 @@
 #map {
-  height: 85dvh;
+  height: 90dvh;
   border-radius: 12px;
   border: 2px solid black;
+  margin-top: 1%;
 }
 
 body {
-  background-color: rgb(27, 39, 28);
+  background-color: rgb(17, 17, 17);
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 h2 {
@@ -13,4 +19,122 @@ h2 {
   display: flex;
   padding: 0;
   color: white;
+}
+
+#search {
+  border-radius: 4px;
+  text-align: center;
+  width: 200px;
+  height: 20px;
+  border-color: rgb(12, 69, 255);
+  margin-top: 10px;
+}
+
+/*****************SIDEEEEEEEEEEEBAAAAAAAAAAAAAAAAAAR**************************/
+
+.image-example {
+  width: 300px;
+  height: 200px;
+  background-color: rgb(67, 66, 66);
+  text-align: center;
+}
+
+#sidebar {
+  position: fixed;
+  width: 350px;
+  height: 85%;
+  margin-top: 50px;
+  border: 2px solid rgb(179, 180, 180);
+  justify-content: center;
+  background-color: rgb(25, 25, 25);
+  z-index: 1000;
+  border-radius: 12px;
+  top: 0;
+  right: 0;
+
+  transform: translateX(-2px);
+  transition: transform 0.3s;
+}
+
+#sidebar.sidebar-hidden {
+  transform: translateX(400px);
+  transition: transform 0.3s;
+}
+
+#sidebar-content {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  padding: 0;
+  margin-top: 1%;
+  border-color: 2px solid black;
+  color: rgb(255, 255, 255);
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+}
+
+.search-side {
+  position: absolute;
+  border-radius: 4px;
+  margin-top: 2%;
+  width: 60%;
+  transform: translateX(60px);
+
+  text-align: center;
+}
+
+.img {
+  background-color: blue;
+  width: 90%;
+  height: 20px;
+}
+
+#close-btn {
+  top: 0;
+  right: 0;
+  position: absolute;
+  margin-top: 2%;
+  margin-right: 5%;
+  padding: 2px;
+  width: 40px;
+  border-radius: 4px;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+}
+
+/**--------------------------------CATEGORIES BUTTONN------------*/
+
+#hotel-btn {
+  border-radius: 4px;
+  background-color: rgb(245, 162, 9);
+  color: white;
+  cursor: pointer;
+  padding: 3px;
+}
+
+#park-btn {
+  background-color: green;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 3px;
+}
+
+#rest-btn {
+  background-color: red;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 3px;
+}
+
+#store-btn {
+  background-color: rgb(74, 74, 255);
+  color: white;
+  padding: 3px;
+  cursor: pointer;
+  border-radius: 4px;
 }
