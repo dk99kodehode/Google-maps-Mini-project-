@@ -70,9 +70,9 @@ function markerToMap(data) {
     marker.on("click", (e) => {
       map.setView(e.target.getLatLng(), 15);
       stedsNavn.textContent = `${name}`;
-      stedsAdresse.textContent = `${address}`;
-      åpningstid.textContent = `${hours}`;
-      kontakt.textContent = `${contact}`;
+      stedsAdresse.textContent = `📍${address}`;
+      åpningstid.textContent = `🕒${hours}`;
+      kontakt.textContent = `☎️${contact}`;
 
       sideBar.classList.remove("sidebar-hidden");
       const sideBarSearch = document.querySelector(".search-side");

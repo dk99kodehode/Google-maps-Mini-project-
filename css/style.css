@@ -1,12 +1,11 @@
 #map {
-  height: 90dvh;
+  height: 85dvh;
   border-radius: 12px;
-  border: 2px solid black;
   margin-top: 1%;
 }
 
 body {
-  background-color: rgb(253, 253, 253);
+  background-color: rgb(244, 237, 237);
   margin: 0;
   padding: 0;
   height: 100%;
@@ -14,35 +13,17 @@ body {
   overflow: hidden;
 }
 
-.top-content {
-  gap: 20px;
-  display: flex;
-  padding: 0;
-  align-items: center;
-}
-
 h2 {
   justify-content: center;
   display: flex;
   padding: 0;
-  color: white;
 }
 
-#search {
-  border-radius: 4px;
-  text-align: center;
-  width: 200px;
-  height: 20px;
-  border-color: rgb(12, 69, 255);
-  margin-top: 10px;
-}
-
-/*****************SIDEEEEEEEEEEEBAAAAAAAAAAAAAAAAAAR**************************/
-
+/*- SIDEEEEBAAAAAAAAAAAAAR---*/
 .image-example {
   width: 300px;
   height: 200px;
-  background-color: rgb(67, 66, 66);
+  background-color: rgb(191, 182, 182);
   text-align: center;
 }
 
@@ -50,12 +31,11 @@ h2 {
   position: fixed;
   width: 350px;
   height: 85%;
-  margin-top: 50px;
-  border: 2px solid rgb(179, 180, 180);
+  margin-top: 42px;
   justify-content: center;
-  background-color: rgb(25, 25, 25);
+  background-color: rgb(223, 220, 220);
   z-index: 1000;
-  border-radius: 12px;
+  border-radius: 5px;
   top: 0;
   right: 0;
 
@@ -76,7 +56,7 @@ h2 {
   padding: 0;
   margin-top: 1%;
   border-color: 2px solid black;
-  color: rgb(255, 255, 255);
+  color: rgb(8, 8, 8);
   flex-direction: column;
   gap: 20px;
   padding: 10px;
@@ -96,4 +76,11 @@ h2 {
   background-color: blue;
   width: 90%;
   height: 20px;
+}
+
+.top-content {
+  display: flex;
+  gap: 20px;
+  padding-left: 10px;
+  padding-top: 8px;
 }
