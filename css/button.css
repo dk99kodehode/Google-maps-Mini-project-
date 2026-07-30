@@ -1,0 +1,59 @@
+#close-btn {
+  top: 0;
+  right: 0;
+  position: absolute;
+  margin-top: 2%;
+  margin-right: 5%;
+  padding: 2px;
+  width: 40px;
+  border-radius: 4px;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+}
+
+#hotel-btn {
+  cursor: pointer;
+  border: none;
+  padding: 5px 0;
+  background: transparent;
+  color: rgb(12, 12, 12);
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+#hotel-btn::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -1px;
+  left: 0;
+  background-color: black;
+
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+#hotel-btn:hover::after {
+  transform: translateX(0);
+}
+
+#park-btn {
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 3px;
+}
+
+#rest-btn {
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 3px;
+}
+
+#store-btn {
+  padding: 3px;
+  cursor: pointer;
+  border-radius: 4px;
+}
