@@ -24,14 +24,22 @@ const closeBtn = document.getElementById("close-btn");
 const sideBar = document.getElementById("sidebar");
 const sideBarContent = document.getElementById("sidebar-content");
 
-/*-----swap categories button-----*/
-const restaurantBtn = document.getElementById("rest-btn");
-const storeBtn = document.getElementById("store-btn");
-const parkBtn = document.getElementById("park-btn");
-const hotelBtn = document.getElementById("hotel-btn");
-const transportBtn = document.getElementById("transport-btn");
-const apotekBtn = document.getElementById("apotek-btn");
-const minibankBtn = document.getElementById("minibank-btn");
+/*-----categories-----*/
+const categories = {
+  "rest-btn": "catering.restaurant",
+  "store-btn": "commercial.supermarket",
+  "park-btn": "entertainment.theme_park",
+  "hotel-btn": "accommodation.hotel",
+  "transport-btn": "public_transport",
+  "apotek-btn": "healthcare.pharmacy",
+  "minibank-btn": "service.financial",
+};
+
+Object.entries(categories).forEach(([id, category]) => {
+  document.getElementById(id).addEventListener("click", () => {
+    loadPlace(userLat, userLon, category);
+  });
+});
 
 /*-----LOADER KUN "SUPERMARKETS" I URL-----*/
 async function loadPlace(lat, lon, category) {
@@ -65,52 +73,18 @@ navigator.geolocation.getCurrentPosition(
   },
 );
 
-/*-------TOGGLE BUTTONS FOR DIFFERENT CATEGORIES-----*/
-restaurantBtn.addEventListener("click", () => {
-  category = "catering.restaurant";
-  loadPlace(userLat, userLon, category);
-});
-
-storeBtn.addEventListener("click", () => {
-  category = "commercial.supermarket";
-  loadPlace(userLat, userLon, category);
-});
-
-hotelBtn.addEventListener("click", () => {
-  category = "accommodation.hotel";
-  loadPlace(userLat, userLon, category);
-});
-
-parkBtn.addEventListener("click", () => {
-  category = "entertainment.theme_park";
-  loadPlace(userLat, userLon, category);
-});
-
-transportBtn.addEventListener("click", () => {
-  category = "public_transport";
-  loadPlace(userLat, userLon, category);
-});
-
-apotekBtnBtn.addEventListener("click", () => {
-  category = "healthcare.pharmacy";
-  loadPlace(userLat, userLon, category);
-});
-
-minibankBtn.addEventListener("click", () => {
-  category = "service.financial";
-  loadPlace(userLat, userLon, category);
-});
-
 // Marker som tar lon,lat,names & adress //
 function markerToMap(data) {
   data.features.forEach((feature) => {
     // alle attributes eg vill ha for sidebar contentet"
-    const name = feature.properties.name || "Unrecognized place";
-    const [lon, lat] = feature.geometry.coordinates;
-    const address = feature.properties.address_line2;
-    const hours = feature.properties.opening_hours;
-    const contact = feature.properties.contact.phone;
+    const {
+      name: name,
+      address_line2: address,
+      opening_hours: hours,
+    } = feature.properties;
 
+    const contact = feature.properties.contact.phone;
+    const [lon, lat] = feature.geometry.coordinates;
     const marker = L.marker([lat, lon]).addTo(markerLayer);
 
     /*-----tilfelle du vill ha popup OVER marker som viser adress + name---*/
