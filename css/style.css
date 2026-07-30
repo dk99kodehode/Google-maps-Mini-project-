@@ -1,5 +1,5 @@
 #map {
-  height: 85dvh;
+  height: 90dvh;
   border-radius: 12px;
   margin-top: 1%;
 }
@@ -31,7 +31,7 @@ h2 {
   position: fixed;
   width: 350px;
   height: 85%;
-  margin-top: 42px;
+  margin-top: 55px;
   justify-content: center;
   background-color: rgb(223, 220, 220);
   z-index: 1000;
