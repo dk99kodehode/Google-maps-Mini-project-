@@ -1,9 +1,8 @@
 import { apiKey } from "./env.js";
 
-let userLat;
-let userLon;
-
 const map = L.map("map").setView([0, 0], 2);
+const markerLayer = L.layerGroup().addTo(map);
+
 L.tileLayer(
   `https://maps.geoapify.com/v1/tile/carto/{z}/{x}/{y}.png?&apiKey=${apiKey}`,
   {
@@ -14,8 +13,10 @@ L.tileLayer(
   },
 ).addTo(map);
 
+let userLat;
+let userLon;
+
 let category = "commercial.supermarket";
-const restaurantCategory = "catering.restaurant";
 
 /*--------ELEMENTER FRA HTML---------*/
 const searchBar = document.getElementById("search");
@@ -28,9 +29,13 @@ const restaurantBtn = document.getElementById("rest-btn");
 const storeBtn = document.getElementById("store-btn");
 const parkBtn = document.getElementById("park-btn");
 const hotelBtn = document.getElementById("hotel-btn");
+const transportBtn = document.getElementById("transport-btn");
+const apotekBtn = document.getElementById("apotek-btn");
+const minibankBtn = document.getElementById("minibank-btn");
 
 /*-----LOADER KUN "SUPERMARKETS" I URL-----*/
 async function loadPlace(lat, lon, category) {
+  markerLayer.clearLayers();
   const placeAPI = `https://api.geoapify.com/v2/places?categories=${category}&bias=proximity:${lon},${lat}&limit=20&apiKey=${apiKey}`;
 
   const response = await fetch(placeAPI);
@@ -47,8 +52,8 @@ async function loadPlace(lat, lon, category) {
 // spør om tillatelse for å bruke lokasjonen din og finner "butikker" i nærheten. "Sjå Loadplace API" for confirmation på at det er commercial supermarket
 navigator.geolocation.getCurrentPosition(
   (position) => {
-    const userLat = position.coords.latitude;
-    const userLon = position.coords.longitude;
+    userLat = position.coords.latitude;
+    userLon = position.coords.longitude;
 
     map.setView([userLat, userLon], 14);
 
@@ -60,6 +65,42 @@ navigator.geolocation.getCurrentPosition(
   },
 );
 
+/*-------TOGGLE BUTTONS FOR DIFFERENT CATEGORIES-----*/
+restaurantBtn.addEventListener("click", () => {
+  category = "catering.restaurant";
+  loadPlace(userLat, userLon, category);
+});
+
+storeBtn.addEventListener("click", () => {
+  category = "commercial.supermarket";
+  loadPlace(userLat, userLon, category);
+});
+
+hotelBtn.addEventListener("click", () => {
+  category = "accommodation.hotel";
+  loadPlace(userLat, userLon, category);
+});
+
+parkBtn.addEventListener("click", () => {
+  category = "entertainment.theme_park";
+  loadPlace(userLat, userLon, category);
+});
+
+transportBtn.addEventListener("click", () => {
+  category = "public_transport";
+  loadPlace(userLat, userLon, category);
+});
+
+apotekBtnBtn.addEventListener("click", () => {
+  category = "healthcare.pharmacy";
+  loadPlace(userLat, userLon, category);
+});
+
+minibankBtn.addEventListener("click", () => {
+  category = "service.financial";
+  loadPlace(userLat, userLon, category);
+});
+
 // Marker som tar lon,lat,names & adress //
 function markerToMap(data) {
   data.features.forEach((feature) => {
@@ -70,7 +111,7 @@ function markerToMap(data) {
     const hours = feature.properties.opening_hours;
     const contact = feature.properties.contact.phone;
 
-    const marker = L.marker([lat, lon]).addTo(map);
+    const marker = L.marker([lat, lon]).addTo(markerLayer);
 
     /*-----tilfelle du vill ha popup OVER marker som viser adress + name---*/
     /*marker.bindPopup(name + "<br />" + address);*/
